@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project 3</title>
+    <link rel="stylesheet" href="/fontAwesome/css/all.min.css">
+
+    <style>
+        @font-face {
+            font-family: 'vazir';
+            src: url('/fonts/vazir.eot') format('eot'),
+                url('/fonts/vazir.ttf') format('ttf'),
+                url('/fonts/vazir.woff') format('woff'),
+                url('/fonts/vazir.woff2') format('woff2');
+                font-style: normal;
+                font-weight: bold;
+        }
+        body, *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'vazir';
+            font-size: 16px;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        
+      
+        p.project-title{
+            text-align: center;
+            padding: 30px 0;
+            font-size: 30px;
+            font-weight: bold;
+            margin: 10px 0;
+            box-shadow: 0 0 10px rgba(red, green, blue,.3);
+        }
+
+        body{
+            padding: 60px 0;
+            background-color: #f6f5f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+       h1{
+        font-size: 16px;
+        ;
+       }
+       input,button{
+        cursor: pointer;
+       }
+       p{
+        font-size: 14px;
+        margin: 20px 0 30px;
+        line-height: 25px;
+        
+
+       }
+       a{
+        font-size: 16px;
+        color: #333;
+        margin: 10px 0 0 0;
+       }
+       button{
+        border: 1px solid #dcdcdc;
+        background-color: #3498db;
+        font-size: 15px;
+        font-weight: bold;
+        color: #fff;
+        border-radius: 5px;
+        padding: 6px 45px;
+        transition: transform 80ms ease-in;
+        margin: 20px 0;
+       }
+       .btn-reg{
+        background-color: #27ae60;
+        margin-top: 20px;
+       }
+
+       button:active{
+        transform: scale(0.9);
+       }
+       button:focus{
+        outline: 0;
+
+       }
+       .goast{
+        background-color: transparent;
+        border-color: #fff;
+
+       }
+
+       form{
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0 50px;
+        text-align: center;
+        height: 100%;
+
+       }
+       input{
+        background-color: #eee;
+        border: none;
+        padding: 12px 15px ;
+        margin: 8px 0;
+        width: 100%;
+        direction: rtl;
+
+       }
+       div.container{
+        background-color: #fff;
+        box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);
+        width: 768px;
+        max-width: 100%;
+        overflow: hidden;
+        min-height: 480px;
+        position: relative;
+        direction: ltr;
+
+    }
+
+    .form-container{
+        position: absolute;
+        top: 0;
+        height: 100%;
+        transition: all .5s ease-in-out;
+    }
+    .sign-in-container{
+        left: 0;
+        width: 50%;
+        z-index: 2;
+    }
+
+    div.social-icon{
+        margin: 20px 0;
+
+    }
+
+    div.social-icon a{
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin: 0 5px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        
+    }
+    .sign-up-container{
+        left: 0;
+        width: 50%;
+        z-index: 1;
+        opacity: 0;
+
+    }
+
+    .overlay-container{
+         position: absolute;
+         top: 0;
+         left: 50%;
+         width: 50%;
+         height: 100%;
+         overflow: hidden;
+         transition: transform .6s ease-in-out;
+         z-index: 100;
+
+    }
+    .overlay{
+        background-color: #ff416c;
+        background: linear-gradient(to right, #ff4b2b, #ff416c);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 0 0;
+        height: 100%;
+        width: 200%;
+        color: #fff;
+        position: relative;
+        left: -100%;  
+        transform: translateX(0);
+        transition: transform .5s ease-in-out;
+
+    }
+
+    .over-left{
+        transform: translateX(-20%);
+    }
+    .over-right{
+        right: 0;
+        transform: translateX(0);
+
+    }
+    .overlay-panel{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0 40px;
+        height: 100%;
+        width: 50%;
+        top: 0;
+        text-align: center;
+        transform: translateX(0);
+        transition: transform .5s ease-in-out;
+
+    }
+    .right-panel-active .overlay-container{
+        transform: translateX(-100%);
+
+    }
+   
+    .right-panel-active .sign-up-container{
+        transform: translateX(100%);
+        z-index: 33;
+        opacity: 1;
+       
+    }
+     .right-panel-active .sign-in-container{
+        transform: translateX(100%);
+        
+       
+       
+    }
+    .right-panel-active .overlay {
+        transform: translateX(50%);
+    }
+    </style>
+    
+</head>
+
+<body>
+
+    <p class="project-title">پروژه شماره 4</p>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>عضویت با شبکه های اجتماعی</h1>
+                <div class="social-icon">
+                   <a href="#"> <i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>یا</span>
+                <input type="text" name="name" id="" placeholder="نام...">
+                <input type="email" name="email" id="" placeholder="ایمل...">
+                <input type="password" name="pass" id="" placeholder="کلمه عبور...">
+                <button class="btn-reg">عضویت</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>ورود با شبکه های اجتماعی</h1>
+                <div class="social-icon">
+                   <a href="#"> <i class="fab fa-facebook-f"></i></a>
+                   <a href="#"> <i class="fab fa-google-plus-g"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>یا</span>
+               
+                <input type="email" name="email" id="" placeholder="ایمل...">
+                <input type="password" name="pass" id="" placeholder="کلمه عبور...">
+                <a href="#">فراموشی رمز عبور</a>
+                <button class="btn-login">ورود</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel over-left">
+                    <h1>خوش آمدید</h1>
+                    <p>برای دسترسی به تمام امکانات سایت ابتدا باید لاگین نمایید!</p>
+                    <button class="goast" id="sign-in">ورود</button>
+                </div>
+                <div class="overlay-panel over-right">
+                    <h1>خوش آمدید</h1>
+                    <p>اگر عضو سایت نیستید در کمتر از 1 ثانیه عضو سایت شوید</p>
+                    <button class="goast" id="sign-up">عضویت</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/JS/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $('#sign-up').click(function(){
+                $('#container').addClass('right-panel-active');
+            });
+            $('#sign-in').click(function(){
+                $('#container').removeClass('right-panel-active');
+            })
+            $('.btn-reg').click(function(event){
+                event.preventDefault();
+            })
+        });
+    </script>
+</body>
+
+</html>
